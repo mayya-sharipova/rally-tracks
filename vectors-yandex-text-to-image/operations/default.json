@@ -1,0 +1,7 @@
+{
+  "name": "knn-search-10-100",
+  "operation-type": "search",
+  "param-source": "knn-param-source",
+  "k": 10,
+  "num-candidates": 100
+}
