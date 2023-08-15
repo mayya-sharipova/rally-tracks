@@ -1,0 +1,30 @@
+{% import "rally.helpers" as rally with context %}
+{
+  "version": 2,
+  "description": "Benchmark for vector search on the MS Turing dataset",
+  "indices": [
+    {
+      "name": "vectors-ms-turing",
+      "body": "index.json"
+    }
+  ],
+  "corpora": [
+    {
+      "name": "vectors-ms-turing",
+      "documents": [
+        {
+          "source-file": "documents.json.bz2",
+          "document-count": 200000000,
+          "compressed-bytes": 160107094951,
+          "uncompressed-bytes": 435510611910
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {{ rally.collect(parts="operations/*.json") }}
+  ],
+  "challenges": [
+    {{ rally.collect(parts="challenges/*.json") }}
+  ]
+}
