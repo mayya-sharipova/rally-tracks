@@ -5,6 +5,7 @@
     "index.store.preload": [ "vec", "vex", "vem"],
       {% endif %}
     "index.number_of_shards": {{number_of_shards | default(1)}},
+    "index.mode": "vector_search",
     "index.number_of_replicas": {{number_of_replicas | default(0)}}
     {%- endif -%}{# non-serverless-index-settings-marker-end #}
   },
