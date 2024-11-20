@@ -1,8 +1,9 @@
 {
   "settings": {
     "index": {
-      "number_of_shards": {{number_of_shards | default(1)}},
-      "number_of_replicas": 0,
+      "number_of_shards": 1,
+      "number_of_replicas": 0
+      {% if aggressive_merge_policy %},
       "merge": {
         "policy": {
           "max_merged_segment": "25gb",
@@ -10,6 +11,7 @@
           "segments_per_tier": 5
         }
       }
+      {% endif %}
     }
   },
   "mappings": {
