@@ -41,6 +41,26 @@
       }
     },
     {
+      "name": "wait-until-merges-finish-after-index",
+      "operation": {
+        "operation-type": "index-stats",
+        "index": "_all",
+        "condition": {
+          "path": "_all.total.merges.current",
+          "expected-value": 0
+        },
+        "retry-until-success": true,
+        "include-in-reporting": false
+      }
+    },
+    {
+      "name": "post-ingest-sleep-after-index",
+      "operation": {
+        "operation-type": "sleep",
+        "duration": 30
+      }
+    },
+    {
       "name": "knn-search-10-50-match-all",
       "operation": "knn-search-10-50-match-all",
       "warmup-iterations": 100,
