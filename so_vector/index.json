@@ -1,20 +1,21 @@
-{% set p_include_non_serverless_index_settings = (include_non_serverless_index_settings | default(build_flavor != "serverless")) %}
-
 {
   "settings": {
-    {# non-serverless-index-settings-marker-start #}{%- if build_flavor != "serverless" or serverless_operator == true -%}
-      {% if p_include_non_serverless_index_settings %}
-    "index.number_of_shards": {{number_of_shards | default(2)}},
-    "index.number_of_replicas": {{number_of_replicas | default(0)}}
-      {% endif %}
-    {%- endif -%}{# non-serverless-index-settings-marker-end #}
+    "index": {
+      "number_of_shards": {{number_of_shards | default(2)}},
+      "number_of_replicas": 0,
+      "merge": {
+        "policy": {
+          "max_merged_segment": "25gb",
+          "floor_segment": "1gb",
+          "segments_per_tier": 5
+        }
+      }
+    }
   },
   "mappings": {
-    {%- if build_flavor != "serverless" -%}
     "_source": {
       "excludes": ["titleVector"]
     },
-    {%- endif -%}
     "properties": {
       "userId": {
         "type": "keyword"
