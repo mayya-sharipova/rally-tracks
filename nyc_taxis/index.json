@@ -43,7 +43,12 @@
         "type": "scaled_float"
       },
       "tip_amount": {
-        "type": "double"
+        "type": "float",
+        "fields": {
+          "half_float": {
+            "type": "half_float"
+          }
+        }
       },
       "payment_type": {
         "type": "keyword"

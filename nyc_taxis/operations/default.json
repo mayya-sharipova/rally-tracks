@@ -1167,6 +1167,46 @@
     },
   {%- endif -%}{# non-serverless-doc-partitioning-marker-end #}
     {
+      "name": "desc_sort_tip_amount_float",
+      "operation-type": "search",
+      "index": "nyc_taxis",
+      "body": {
+        "sort" : [
+          {"tip_amount" : "desc"}
+        ]
+      }
+    },
+    {
+      "name": "asc_sort_tip_amount_float",
+      "operation-type": "search",
+      "index": "nyc_taxis",
+      "body": {
+        "sort" : [
+          {"tip_amount" : "asc"}
+        ]
+      }
+    },
+    {
+      "name": "desc_sort_tip_amount_half_float",
+      "operation-type": "search",
+      "index": "nyc_taxis",
+      "body": {
+        "sort" : [
+          {"tip_amount.half_float" : "desc"}
+        ]
+      }
+    },
+    {
+      "name": "asc_sort_tip_amount_half_float",
+      "operation-type": "search",
+      "index": "nyc_taxis",
+      "body": {
+        "sort" : [
+          {"tip_amount.half_float" : "asc"}
+        ]
+      }
+    },
+    {
       "name": "sort_by_ts_query",
       "operation-type": "search",
       "index": "nyc_taxis",
