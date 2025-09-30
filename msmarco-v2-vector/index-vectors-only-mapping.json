@@ -8,6 +8,8 @@
       {% if preload_pagecache %}
       "store.preload": [ "vec", "vex", "vem"],
       {% endif %}
+      "vectors.indexing.use_gpu": true,
+      "merge.scheduler.auto_throttle" : false,
       "number_of_shards": {{number_of_shards | default(1)}},
       "number_of_replicas": {{number_of_replicas | default(0)}}
       {% if aggressive_merge_policy %},
